@@ -1,11 +1,13 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_challenge/page/home_widget.dart';
+import 'package:ui_challenge/page/main_page.dart';
+import 'package:ui_challenge/page/parallax_motion_page.dart';
 
 void main() {
   runApp(const MyApp());
   doWhenWindowReady(() {
-    const initialSize = Size(600, 450);
+    const initialSize = Size(750, 600);
     appWindow.minSize = initialSize;
     appWindow.size = initialSize;
     appWindow.alignment = Alignment.center;
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AppHomePage(),
+      home: const MainPage(),
     );
   }
 }

@@ -53,7 +53,25 @@ class _AppHomePageState extends State<AppHomePage> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight)),
             ),
-            SizedBox(height: 40,child: MoveWindow(child: Container(),)),
+            SizedBox(
+                height: 60,
+                child: MoveWindow(
+                  child: Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 20,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.arrow_back_ios,color: Colors.white,))
+                      ],
+                    ),
+                  ),
+                )),
             Center(
               child: _HomePageBody(),
             )
