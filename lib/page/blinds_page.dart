@@ -22,10 +22,11 @@ class BlindsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          height: 200,
+          height: 400,
           child: BlindsBannerWidget(
             animDuration: Duration(milliseconds: 500),
               builder: (ctx, index) => Container(

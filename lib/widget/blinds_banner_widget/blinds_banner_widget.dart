@@ -32,18 +32,22 @@ class BlindsBannerWidget extends StatefulWidget {
 
 class _BlindsBannerWidgetState extends State<BlindsBannerWidget> {
   int curIndex = 0;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
     curIndex = widget.curIndex;
-    Timer.periodic(widget.preItemWaitDuration ?? Duration(seconds: 3), (t) {
-      if (curIndex == widget.length - 1) {
-        curIndex = 0;
-      } else {
-        curIndex += 1;
-      }
-      setState(() {});
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      timer = Timer.periodic(widget.preItemWaitDuration ?? Duration(seconds: 3),
+          (t) {
+        if (curIndex == widget.length - 1) {
+          curIndex = 0;
+        } else {
+          curIndex += 1;
+        }
+        setState(() {});
+      });
     });
   }
 
@@ -111,5 +115,12 @@ class _BlindsBannerWidgetState extends State<BlindsBannerWidget> {
         child: child,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    timer?.cancel();
   }
 }

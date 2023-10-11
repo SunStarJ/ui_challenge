@@ -31,8 +31,8 @@ class ControllerOffsetWidgetState extends State<ControllerOffsetWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 400,
+        AspectRatio(
+          aspectRatio: 3/ 1,
           child: OffsetWidget(
             key: key,
             child: widget.child,
@@ -54,7 +54,7 @@ class ControllerOffsetWidgetState extends State<ControllerOffsetWidget> {
         return;
       }
       double difY = windowHeight - offset.dy;
-      floatY = -difY/2;
+      floatY = -difY;
       setState(() {});
     });
   }

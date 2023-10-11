@@ -1,5 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/main_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        textTheme: GoogleFonts.notoSansTextTheme(),
         useMaterial3: true,
       ),
       home: MainPage(),
