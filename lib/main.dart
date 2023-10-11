@@ -1,5 +1,6 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/main_page.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainPage(),
+      home: MainPage(),
     );
   }
 }

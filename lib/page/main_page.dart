@@ -1,6 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
 
@@ -37,6 +38,11 @@ class MainPage extends StatelessWidget {
                         navigateToPage(context, const ParallaxMotionPage());
                       },
                       child: Text("视差动画")),
+                  MaterialButton(
+                      onPressed: () {
+                        navigateToPage(context, BlindsPage());
+                      },
+                      child: Text("百叶窗banner")),
                 ],
               ),
             ),

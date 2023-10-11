@@ -60,7 +60,6 @@ class _ParallaxMotionPageState extends State<_ParallaxMotionPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
