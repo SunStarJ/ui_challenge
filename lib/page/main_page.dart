@@ -1,6 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
@@ -13,7 +14,14 @@ import 'clip_img_page.dart';
 /// Date: 2023/10/10
 /// 善战者无赫赫之功，善医者无煌煌之名
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   List<String> buttonNames = [
     "MIRROR_CLOCK",
     "PARALLAX_IMG",
@@ -22,107 +30,151 @@ class MainPage extends StatelessWidget {
     "COMING_SOON"
   ];
 
-  MainPage({super.key});
+  bool dogeShow = false;
+  Offset? mouseOffset;
+  double moveType = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-              Color(0XFFFDE2EB),
-              Color(0XFFF09DAF),
-            ])),
-          ),
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                alignment: Alignment.centerRight,
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        foregroundImage: AssetImage("asset/image/header.jpg"),
+      body: MouseRegion(
+        onEnter: (e) {
+          setState(() {
+            dogeShow = true;
+            mouseOffset = e.position;
+          });
+        },
+        onHover: (e) {
+          setState(() {
+            if (e.position.dx - (mouseOffset?.dx ?? 0) > 0) {
+              moveType = -1.0;
+            } else {
+              moveType = 1.0;
+            }
+            mouseOffset = e.position;
+          });
+        },
+        onExit: (_) {
+          setState(() {
+            dogeShow = false;
+          });
+        },
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Color(0XFFFDE2EB),
+                Color(0XFFF09DAF),
+              ])),
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: Container(
+                  alignment: Alignment.centerRight,
+                  child: const Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        height: 80,
+                        width: 80,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          foregroundImage: AssetImage("asset/image/header.jpg"),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Sun.star",
-                      style: TextStyle(color: Colors.white, fontSize: 40),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      """may be a good man
-                    coding monkey of Flutter and Android
-                    location : Shijiazhuang City, Hebei 
-                    this is my ui challenge website
-                    Welcome""",
-                      style: TextStyle(
-                        color: Colors.white,
+                      SizedBox(
+                        height: 20,
                       ),
-                      textAlign: TextAlign.end,
-                    )
-                  ],
+                      Text(
+                        "Sun.star",
+                        style: TextStyle(color: Colors.white, fontSize: 40),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        """may be a good man
+                      coding monkey of Flutter and Android
+                      location : Shijiazhuang City, Hebei 
+                      this is my ui challenge website
+                      Welcome""",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.end,
+                      )
+                    ],
+                  ),
+                )),
+                SizedBox(
+                  width: 20,
                 ),
-              )),
-              SizedBox(
-                width: 20,
-              ),
-              VerticalDivider(
-                color: Color(0XFFE5E5E5),
-              ),
-              Expanded(
-                child: Center(
-                  child: Container(
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (ctx, index) => HoverButton(
-                          name: buttonNames[index],
-                          onPress: () {
-                            Widget? widget;
-                            switch (index) {
-                              case 0:
-                                widget = const AppHomePage();
-                                break;
-                              case 1:
-                                widget = const ParallaxMotionPage();
-                                break;
-                              case 2:
-                                widget = BlindsPage();
-                                break;
-                              case 3:
-                                widget = const KeyBoardImgPage();
-                                break;
-                            }
-                            if (widget != null) {
-                              navigateToPage(context, widget);
-                            }
-                          }),
-                      itemCount: buttonNames.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return Container(
-                          height: 10,
-                        );
-                      },
+                VerticalDivider(
+                  color: Color(0XFFE5E5E5),
+                ),
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        itemBuilder: (ctx, index) => HoverButton(
+                            name: buttonNames[index],
+                            onPress: () {
+                              Widget? widget;
+                              switch (index) {
+                                case 0:
+                                  widget = const AppHomePage();
+                                  break;
+                                case 1:
+                                  widget = const ParallaxMotionPage();
+                                  break;
+                                case 2:
+                                  widget = BlindsPage();
+                                  break;
+                                case 3:
+                                  widget = const KeyBoardImgPage();
+                                  break;
+                              }
+                              if (widget != null) {
+                                navigateToPage(context, widget);
+                              }
+                            }),
+                        itemCount: buttonNames.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return Container(
+                            height: 10,
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            dogeShow
+                ? Positioned(
+                    left: mouseOffset?.dx == null ? 0 : (mouseOffset!.dx + 10),
+                    top: mouseOffset?.dy == null ? 0 : (mouseOffset!.dy + 10),
+                    width: 50,
+                    height: 50,
+                    child: Transform(
+                      transform: Matrix4.identity()..scale(moveType, 1, 1),
+                      child: Gif(
+                        image: AssetImage("asset/image/doge.gif"),
+                        autostart: Autostart.loop,
+                        duration: Duration(milliseconds: 200),
+                      ),
+                    ),
+                  )
+                : const SizedBox(
+                    height: 0,
+                    width: 0,
+                  )
+          ],
+        ),
       ),
     );
   }

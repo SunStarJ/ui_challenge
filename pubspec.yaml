@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.1.0
   bitsdojo_window: ^0.1.5
   dyn_mouse_scroll: ^1.0.7
+  url_launcher: ^6.1.14
+  gif: ^2.2.0
 
 dev_dependencies:
   flutter_test:
