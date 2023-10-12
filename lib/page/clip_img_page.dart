@@ -33,13 +33,11 @@ class _KeyBoardImgPageState extends State<KeyBoardImgPage> {
               child: Center(
             child: MouseRegion(
               onHover: (e) {
-                print(e.position.dx);
                 setState(() {
                   middlePont = e.position;
                 });
               },
               onEnter: (e) {
-                print(e.position.dx);
                 setState(() {
                   middlePont = e.position;
                 });
