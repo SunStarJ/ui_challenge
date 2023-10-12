@@ -6,6 +6,8 @@ import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
 
+import 'clip_img_page.dart';
+
 /// File Description:
 /// Author: HJ2023011
 /// Date: 2023/10/10
@@ -16,6 +18,7 @@ class MainPage extends StatelessWidget {
     "MIRROR_CLOCK",
     "PARALLAX_IMG",
     "BLINDS_BANNER",
+    "CLIP_IMG_BANNER",
     "COMING_SOON"
   ];
 
@@ -98,6 +101,9 @@ class MainPage extends StatelessWidget {
                                 break;
                               case 2:
                                 widget = BlindsPage();
+                                break;
+                              case 3:
+                                widget = const KeyBoardImgPage();
                                 break;
                             }
                             if (widget != null) {

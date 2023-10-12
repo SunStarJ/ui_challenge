@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_challenge/widget/blinds_banner_widget/blinds_banner_widget.dart';
@@ -22,21 +23,35 @@ class BlindsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          height: 400,
-          child: BlindsBannerWidget(
-            animDuration: Duration(milliseconds: 500),
-              builder: (ctx, index) => Container(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.network(picList[index],fit: BoxFit.cover,),
-                    ),
-                  ),
-              length: 4),
-        ),
+      body: Column(
+        children: [
+          Container(
+            height: kToolbarHeight,
+            child: MoveWindow(
+              child: AppBar(),
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                height: 400,
+                child: BlindsBannerWidget(
+                    animDuration: Duration(milliseconds: 500),
+                    builder: (ctx, index) => Container(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.network(
+                              picList[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                    length: 4),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
