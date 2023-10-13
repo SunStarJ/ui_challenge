@@ -6,7 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
-
+import 'package:ui_challenge/page/round_satellite_btn_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'clip_img_page.dart';
 
 /// File Description:
@@ -27,6 +28,7 @@ class _MainPageState extends State<MainPage> {
     "PARALLAX_IMG",
     "BLINDS_BANNER",
     "CLIP_IMG_BANNER",
+    "SATELLITE_BTN",
     "COMING_SOON"
   ];
 
@@ -73,11 +75,11 @@ class _MainPageState extends State<MainPage> {
                 Expanded(
                     child: Container(
                   alignment: Alignment.centerRight,
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 80,
                         width: 80,
                         child: CircleAvatar(
@@ -85,17 +87,17 @@ class _MainPageState extends State<MainPage> {
                           foregroundImage: AssetImage("asset/image/header.jpg"),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         "Sun.star",
                         style: TextStyle(color: Colors.white, fontSize: 40),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         """may be a good man
                       coding monkey of Flutter and Android
                       location : Shijiazhuang City, Hebei 
@@ -105,7 +107,29 @@ class _MainPageState extends State<MainPage> {
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.end,
-                      )
+                      ),
+                      const Text(
+                        "project home : ",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.end,
+                      ),
+                      MaterialButton(
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          highlightElevation: 0,
+                          splashColor: Colors.transparent,
+                          textColor: Colors.blue,
+                          onPressed: () {
+                            launchUrl(Uri.parse(
+                                "https://github.com/SunStarJ/ui_challenge"));
+                          },
+                          child: const Text(
+                            "https://github.com/SunStarJ/ui_challenge",
+                            style:
+                                TextStyle(decoration: TextDecoration.underline),
+                          ))
                     ],
                   ),
                 )),
@@ -114,6 +138,9 @@ class _MainPageState extends State<MainPage> {
                 ),
                 VerticalDivider(
                   color: Color(0XFFE5E5E5),
+                ),
+                SizedBox(
+                  width: 20,
                 ),
                 Expanded(
                   child: Center(
@@ -136,6 +163,9 @@ class _MainPageState extends State<MainPage> {
                                   break;
                                 case 3:
                                   widget = const KeyBoardImgPage();
+                                  break;
+                                case 4:
+                                  widget = const RoundSatellitePage();
                                   break;
                               }
                               if (widget != null) {

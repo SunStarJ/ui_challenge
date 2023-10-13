@@ -5,6 +5,7 @@ import 'package:ui_challenge/page/main_page.dart';
 
 Future<void> main() async {
   runApp(const MyApp());
+
   doWhenWindowReady(() {
     const initialSize = Size(750, 600);
     appWindow.minSize = initialSize;
