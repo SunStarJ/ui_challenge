@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_challenge/page/blinds_page.dart';
+import 'package:ui_challenge/page/flow_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
 import 'package:ui_challenge/page/round_satellite_btn_page.dart';
@@ -29,6 +30,7 @@ class _MainPageState extends State<MainPage> {
     "BLINDS_BANNER",
     "CLIP_IMG_BANNER",
     "SATELLITE_BTN",
+    "FLOW_LAYOUT",
     "COMING_SOON"
   ];
 
@@ -127,8 +129,9 @@ class _MainPageState extends State<MainPage> {
                           },
                           child: const Text(
                             "https://github.com/SunStarJ/ui_challenge",
-                            style:
-                                TextStyle(decoration: TextDecoration.underline),
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
                           ))
                     ],
                   ),
@@ -166,6 +169,9 @@ class _MainPageState extends State<MainPage> {
                                   break;
                                 case 4:
                                   widget = const RoundSatellitePage();
+                                  break;
+                                case 5:
+                                  widget = FlowPage();
                                   break;
                               }
                               if (widget != null) {
