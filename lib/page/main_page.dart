@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_challenge/page/blinds_page.dart';
 import 'package:ui_challenge/page/flow_page.dart';
 import 'package:ui_challenge/page/home_widget.dart';
+import 'package:ui_challenge/page/map_page.dart';
 import 'package:ui_challenge/page/parallax_motion_page.dart';
 import 'package:ui_challenge/page/round_satellite_btn_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,6 +32,7 @@ class _MainPageState extends State<MainPage> {
     "CLIP_IMG_BANNER",
     "SATELLITE_BTN",
     "FLOW_LAYOUT",
+    "MAP_SVG",
     "COMING_SOON"
   ];
 
@@ -172,6 +174,9 @@ class _MainPageState extends State<MainPage> {
                                   break;
                                 case 5:
                                   widget = FlowPage();
+                                  break;
+                                case 6:
+                                  widget = const MapSvgPage();
                                   break;
                               }
                               if (widget != null) {
